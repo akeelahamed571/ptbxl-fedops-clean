@@ -1,4 +1,4 @@
-task_id: "ptbxl_multimodal_test"
+task_id: "ptbxlmultimodaltest"
 random_seed: 42 # newly added line
 
 dataset:
