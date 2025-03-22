@@ -1,0 +1,31 @@
+task_id: "ptbxl_multimodal_test"
+random_seed: 42 # newly added line
+
+dataset:
+  name: "PTBXL"
+  validation_split: 0.2
+model_type: 'Pytorch' 
+
+model:
+  _target_: models.ECGClassifier
+  input_channels: 12
+  output_size: 5  # e.g., MI, STTC, NORM, CD, HYP
+
+batch_size: 64
+num_epochs: 2
+num_rounds: 5
+clients_per_round: 1
+
+wandb:
+  use: false
+
+
+#recentl me added to run in terminal
+  server:
+    strategy:
+      _target_: flwr.server.strategy.FedAvg
+      fraction_fit: 1.0
+      fraction_evaluate: 1.0
+      min_fit_clients: ${clients_per_round}
+      min_available_clients: ${clients_per_round}
+      min_evaluate_clients: ${clients_per_round}

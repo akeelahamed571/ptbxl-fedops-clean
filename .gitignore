@@ -1,0 +1,8 @@
+dataset/
+outputs/
+__pycache__/
+.hydra/
+*.log
+*.pth
+*.pt
+
